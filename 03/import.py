@@ -191,7 +191,7 @@ def process_voice(voice, index, score_id):
 def process_voices(voices, score_id):
     voice_ids = []
     for i in range(voices.__len__()):
-        v_id = process_voice(voices[i], i, score_id)
+        v_id = process_voice(voices[i], i+1, score_id)
         voice_ids.append(v_id)
     return voice_ids
 
