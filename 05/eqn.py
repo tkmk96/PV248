@@ -9,15 +9,15 @@ VAR_REGEX = re.compile(r"[a-z]")
 
 
 def parse_text(text):
-    EQ_REGEX = re.compile(r"(\d*)(.)")
     equations = []
 
-    for line in text.split('\n'):
+    for line_t in text.split('\n'):
+        line = line_t.strip()
         if line == '':
             continue
         sides = line.split('=')
         right_side = sides[1]
-        left_side = sides[0].split(' ')
+        left_side = sides[0].split()
         left_side.insert(0, '+')
 
         variables = {}
