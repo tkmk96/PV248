@@ -116,10 +116,11 @@ def get_regression_slope(sorted_points, start_date):
 
 
 def get_stat_data(points_array, start_date, regression_slope, ):
-    date16 = date20 = 'inf'
+    date16 = 'inf'
+    date20 = 'inf'
     if regression_slope != 0:
-        date16 = date.fromordinal(math.ceil((16.0 / regression_slope) + start_date)).isoformat()
-        date20 = date.fromordinal(math.ceil((20.0 / regression_slope) + start_date)).isoformat()
+        date16 = date.fromordinal(math.floor((16.0 / regression_slope) + start_date)).isoformat()
+        date20 = date.fromordinal(math.floor((20.0 / regression_slope) + start_date)).isoformat()
 
     stats = {
         'mean': numpy.mean(points_array),
