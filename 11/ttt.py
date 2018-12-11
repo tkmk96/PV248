@@ -105,8 +105,6 @@ port = int(argv[1])
 
 @routes.get('/start')
 async def start(request):
-    # if 'name' not in request.query:
-    #     return web.json_response({'id': manager.new_game(None)})
     return web.json_response({'id': manager.new_game(request.query.get('name'))})
 
 
