@@ -1,0 +1,80 @@
+﻿review od 433826 *0.5
+
+Review je fajn, spomenuté výhrady akceptujem, za pochvaly ďakujem :)
+
+*** HW01 stat.py *** 
+
+Vypracovanie tejto ulohy sa mi velmi pacilo, je lahko citatelna a pochopitelna. Takisto chvalim okomentovanie niektorych casti. 
+
+*get_century()
+--- Paci sa mi ako si prehladne rozdelil vypocet storocia a nezapisal to nejakym inym necitatelnym sposobom.
+
+Iba 2 drobne vyhrady:
+
+--- Nazvy premennych 'f','r'- viem ze pre potreby tejto ulohy to uplne staci, pretoze kod nie je rozsiahly a da sa lahko dohladat co dana premenna obsahuje ale do buducna by som odporucil kazdu premennu pomenovat tak aby bolo jasne pri prvom pohladne na premennu co priblizne sa v nej nachadza
+
+ 
+--- Asi by bolo krajsie aby mal tvoj program formu main() funkcie. 
+
+
+*** HW02 scorelib.py & test.py***
+
+Paci sa mi dekompozicia ulohy na funkcie, ktore su prehladne rozdeluju kod na mensie ucelene kusky a tym padom vyrazne zlepsuje citatelnost kodu pre niekoho kto sa s tymto kodom stretol po prvy krat (mna), preto mam ku kodu len male pripomienky/pochvaly:
+
+* value_if_nonempty
+--- Aj ked ma tato funkcia len jeden riadok je velmi prospesna a vyrazne zvysuje schopnost citat kod kedze je pouzita viac krat
+
+--- Na riadkoch 255 a 288 inicializujes premennu "r" a "v" napriek tomu, ze je to riadiaca premenna for cyklu, je vhodnejsie pouzit iny nazov premennej, ktory by zodpovedal tomu co sa v danej premennej nachadza
+
+*if evaluation
+*    return evaluation.group(1)
+*return None
+
+--- Tento kod (vyskytujuci sa viac krat len v inej forme) by sa dal jednoduchsia prepisat na jeden riadok
+return evaluation.group(1) if evaluation is not None else None
+
+Takisto:
+*if evaluation:
+*    return evaluation.group(1).strip()== 'yes'
+*return False
+
+---Mozeme prepisat ako:
+return evaluation.group(1).strip()== 'yes' if evaluation is not None else False
+
+---Opat by bolo asi rozumnejsie aby mal tvoj program formu main() funkcie (test.py) 
+
+
+*** HW04 database.py, getprint.py, search.py***
+
+Velmi pekna praca s datami, celkovo hodnotim ulohu velmi kladne a prestudovanim tvojho kodu som sa naucil nieco co v buducnosti urcite mozem vyuzit. Par pripomienok:
+
+*SQL_DAT_FILE = 'scorelib.dat'
+--- To ze je premenna pomenovana velkymi pismenami vo mne inklinuje globalnost premnnej. Zvolil by som zapis:
+global SQL_DAT_FILE
+SQL_DAT_FILE = ...
+
+
+*print_id = int(argv[1])
+---Kontrola vstupnych argumentov nebola vyzadovana ale uz len pre lepsie otestovanie vlastneho kodu by som overil ci sa v argv[1] nachadzaju cisla/cislo a ci sa pretypovanie na int podari.
+
+* for p, e_id, s_id in prints:
+--- Na prvy pohlad mi moc nie je jasne co sa skryva za premennymi p, e_id a s_id preto by som to najblizsie radsej rozpisal a venoval viac casu pomenovaniam funkcii a premennych 
+
+
+* query = """SELECT p.name, p.born, p.died 
+                   FROM edition_author ea
+                    JOIN person p on ea.editor = p.id WHERE ea.edition=?"""
+--- Viac krat sa ti objavuje kod query = ...
+Pre vacsi prehladnost a pripadnu buducu zmenu tychto SQL prikazov by som ich v kode zhromazdil napriklad formou globalnej premennej na jedno miesto
+
+
+*self.connection.close()
+--- Chvalim uzatvorenie databazy potom ako si s nou ukoncil pracu. Na toto velmi vela ludi zabuda 
+
+
+*def get_edition_by_print_id(self, print_id):
+        pass
+--- Tejto funkcii som velmi neporozumel, budem rad ak mi ju objasnis v PM.
+
+
+--- Na niektorých miestach je zbytočný počet medzier prípadne vynechaných riadkov. Pycharm ponuka moznost automaticky upravit taketo drobnosti. Do buducna odporucam vzdy pri submitovani ulohy tento nastroj vyuzit.
