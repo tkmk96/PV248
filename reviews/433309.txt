@@ -1,0 +1,40 @@
+review od 433309, *0.5
+
+Velmi pekne dakujem za review. Review je pekne spravene a nebudem klamat, ak poviem, ze mi to dalo vela uzitocnych poznatkov do buducna. Smajlici ma prijemne prekvapili 👍😃
+
+# HW08
+## stat.py
+- Vo funkcii 'main' sa otvara subor pomocou obycajneho 'open' – v pripade, ze subor prestane existovat/vyhodi vynimku, sa ku riadku 105 program nedostane. Teda sa nezatvori spravne – pri vacsich projektoch by to mohlo sposobit poskodenie suboru alebo neocakavane spravanie. Bolo by vhodne otvorit ho pomocou ‘with open()’ ktory ma za nasledok to, ze v pripade vyhodenia vynimky sa korektne subor zatvori a neposkodi sa.
+- Funkcie 'mode_dates', 'mode_deadlines' a 'mode_exercises' obsahuju vela duplicitneho kodu. Tieto funkcie by sa dali zjednotit do jednej, a potrebna logika by sa vyhodnocovala
+- Na riadkoch 88-92 je zbytocne pouzita metoda 'array' z kniznice numpy. Metody kniznice numpy vedia pochrumat aj obycajne listy.
+Celkovo je uloha velmi prehladna, v tomto pripade trochu na ukor jednoduchej udrzatelnosti (konkretne tri vyssie spomenute metody).
+
+## student.py
+- Rovnako nespravne osetreny 'open' vo funkcii 'main'.
+- Uloha je velmi pekne strukturovana na pomocne fukcie -- vyrazne zvysuje prehladnost.
+- Celkovo by mozno ale bolo vhodne niektore casti kodu okomentovat.
+
+# HW09
+## http-forward.py
+
+- Funkcia create_json_data je velmi prehladna a elegantne riesi problem s podmienenym pridanim atributu 'json'.
+- Funkcia validate_data by mohla vracat specifickejsi error, ako 'Exception'. Zvysilo by to prehladnost a citatelnost kodu, kedze, by clovek na prvy pohlad videl (uz pri pouziti funkcie), co sa v nej priblizne deje.
+- Riadky 48-50 by boli prehladnejsie, ak by boli spravne okomentovane. Z kodu nieje uplne evidentne, preco sa prepisuje 'accept-encoding' na 'identity'.
+- V ramci zvysenia prehladnosti kodu by som radsej metode create_json_data nadstavil defaultne parametre, ako vzdy posielal 'None'.
+- Na riadok 64 by som pridal '.decode("UTF-8")', kvoli zbytocnym, tazko dohladatelnym bugom s zlym dekodovanim UTF-8 znakov.
+- Na riadku 74 by bolo dobre pridat kontrolu, ci url zacina na 'http'. Ak nie, bolo by vhodne to pred url doplnit.
+- Velka cast kodu na riadkoch 73-82 by sa dala zrefaktorovat so spravnym pouzitim metody '.get(key, default)'. Ak by sa spravne pouzil parameter default, nebolo by potrebne robit tak vela ternarnych porovnavani.
+- Riadok 97-100 by sa dal napisat prehladnejsie, kde by sa v ife kontrolovala podmienka, a na jej zaklade by sa doplnalo 'http'. Pouzitie pass tu zbytocne pridava riadky a nezvysuje prehladnost.
+Celkovo by som ale povedal, ze uloha je napisana velmi prehladne a kvalitne.
+
+# HW11
+## ttt.py
+- Velmi pekne cleneny kod.
+- Pridal by som metodu 'main', a do nej nasypal vsetky konfiguracne riadky (tzn. riadky 100-103 a 162-163).
+- Na riadku 30 by bolo vhodnejsie vracat nejaku zmysluplnu error message (aj ked z riadku 154 vyzera, ze tato situacia by nikdy nemala nastat).
+- Na riadku 60 by som pouzil modulo miesto pouziteho 'abs()', kvoli jednoduchsej citatelnosti.
+- Pouzitie for/else na riadkoch 67-79 je dost pekna hipstercina 👌🤙. Elegantne vyrieseny problem, pacilo sa mi to!
+- Myslim, ze podmienka na riadku 85 nieje spravne zostavena. Mala by kontrolovat pozicie (0,2) a (2,0), kedze o par riadkov vyssie sa kontroluje druha diagonala.
+- Riadok 127 by sa dal zjednodusit na jeden 'or' miesto troch (i.e. 0 <= x <= 2).
+- Funkcia validate_player by sa dala zjednodusit na vracanie podmienky.
+Myslim ze velmi pekne napisana uloha.
